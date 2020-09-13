@@ -7,8 +7,7 @@ import android.os.Handler
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import com.example.mywork.Beranda.MainActivity
-import com.example.mywork.Intro.Intro
+import com.example.mywork.Beranda.Activity.MainPelamarActivity
 import com.example.mywork.Intro.MulaiActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -28,7 +27,7 @@ class SplashScreen : AppCompatActivity() {
             appLogo.startAnimation(fadeIn)
             Handler().postDelayed({
                 if(user != null) {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, MainPelamarActivity::class.java))
                     finish()
                 }else{
                     startActivity(Intent(this, MulaiActivity::class.java))
