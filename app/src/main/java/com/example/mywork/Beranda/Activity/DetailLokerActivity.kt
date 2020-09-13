@@ -2,10 +2,14 @@ package com.example.mywork.Beranda.Activity
 
 import android.os.Bundle
 import android.text.Html
+import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mywork.R
+import org.w3c.dom.Text
 
 class DetailLokerActivity : AppCompatActivity() {
 
@@ -26,6 +30,17 @@ class DetailLokerActivity : AppCompatActivity() {
         val batas_daftar = intent.getStringExtra("LokerBatasDaftar")
         val email_daftar = intent.getStringExtra("LokerEmailDaftar")
         val telp_daftar = intent.getStringExtra("LokerTelpDaftar")
+        
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_detail_loker)
+        setActionBar(toolbar)
+        val btnToolbar = findViewById<ImageButton>(R.id.button_toolbar_detail)
+        btnToolbar.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+                onBackPressed()
+            }
+        })
+        val txtToolbar = findViewById<TextView>(R.id.text_toolbar_detail)
+        txtToolbar.text = perusahaan
 
         val txt_pekerjaan = findViewById<TextView>(R.id.text_pekerjaan_detail_loker)
         val image_logo = findViewById<ImageView>(R.id.image_detail_loker)

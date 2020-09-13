@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Beranda.Activity.MainSeekersActivity" />
-
+        <activity android:name=".Beranda.Activity.DetailLokerActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,6 +1,5 @@
 package com.example.mywork.Beranda.Adapter
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mywork.Beranda.Model.LokerModel
 import com.example.mywork.R
 
-class MainPelamarAdapter (private val list: ArrayList<LokerModel>)
-    : RecyclerView.Adapter<MainPelamarAdapter.MyViewHolder>() {
+class LokerRekomendasiAdapter (private val list: ArrayList<LokerModel>)
+    : RecyclerView.Adapter<LokerRekomendasiAdapter.MyViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -25,7 +24,7 @@ class MainPelamarAdapter (private val list: ArrayList<LokerModel>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.row_main_seekers, parent, false)
+            .inflate(R.layout.row_loker_rekomendasi, parent, false)
         return MyViewHolder(view)
     }
 
@@ -35,6 +34,7 @@ class MainPelamarAdapter (private val list: ArrayList<LokerModel>)
         holder.namaPerusahaan?.text = list[position].perusahaan
         holder.tempatLoker?.text = list[position].tempat
         holder.gajiLoker?.text = "Gaji "+list[position].gaji_min.toString()+"-"+list[position].gaji_max.toString()+" Jt"
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(list[holder.adapterPosition]) }
     }
 
     override fun getItemCount():Int {return list.size}
