@@ -1,5 +1,6 @@
 package com.example.mywork.Beranda.Activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class MainPelamarActivity : AppCompatActivity() {
+class MainSeekersActivity : AppCompatActivity() {
     private lateinit var user: FirebaseUser
     private lateinit var database: FirebaseDatabase
     private lateinit var populer_loker : DatabaseReference
@@ -22,7 +23,7 @@ class MainPelamarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_pelamar)
+        setContentView(R.layout.activity_main_seekers)
 
         val recyclerViewPop = findViewById<RecyclerView>(R.id.recycler_view_homepage_poploker)
         val recyclerViewRec = findViewById<RecyclerView>(R.id.recycler_view_homepage_poploker)
@@ -39,11 +40,21 @@ class MainPelamarActivity : AppCompatActivity() {
         recyclerView.adapter = listAdapter
         listAdapter.setOnItemClickCallback(object : MainPelamarAdapter.OnItemClickCallback{
             override fun onItemClicked(data: LokerModel) {
-//                val intent = Intent(this@MainActivity, detail::class.java)
-//                intent.putExtra("WAIFU_NAME", data.name)
-//                intent.putExtra("WAIFU_DETAIL", data.detail)
-//                intent.putExtra("WAIFU_IMAGE", data.photo)
-//                startActivity(intent)
+                val intent = Intent(this@MainSeekersActivity, DetailLokerActivity::class.java)
+                intent.putExtra("LokerPekerjaan", data.pekerjaan)
+                intent.putExtra("LokerLogoPerusahaan", data.logo_perusahaan)
+                intent.putExtra("LokerPerusahaan", data.perusahaan)
+                intent.putExtra("LokerTempat", data.tempat)
+                intent.putExtra("LokerGajiMin", data.gaji_min)
+                intent.putExtra("LokerGajiMax", data.gaji_max)
+                intent.putExtra("LokerDetailLoker", data.detail_loker)
+                intent.putExtra("LokerSyaratLoker", data.syarat_loker)
+                intent.putExtra("LokerTipe", data.tipe)
+                intent.putExtra("LokerBidang", data.bidang)
+                intent.putExtra("LokerBatasDaftar", data.batas_daftar)
+                intent.putExtra("LokerEmailDaftar", data.email_daftar)
+                intent.putExtra("LokerTelpDaftar", data.telp_daftar)
+                startActivity(intent)
             }
         })
     }
