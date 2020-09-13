@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">My work</string>
+
+    <string name="selected_item">Selected item:</string>
+    <string name="ending">Pengajuan akun telah berhasil. Informasi lebih lanjut akan kami hubungi maksimal dalam 7 hari. Klik tombol dibawah untuk kembali</string>
+    <string-array name="NamaProvinsi">
+        <item>Jawa Timur</item>
+        <item>Jawa Barat</item>
+        <item>Jawa Tengah</item>
+        <item>Kalimantan</item>
+        <item>Papua</item>
+        <item>Sulawesi</item>
+        <item>Nusa Tenggara Barat</item>
+        <item>Aceh</item>
+    </string-array>
+    <string-array name="GajiPilihan">
+        <item>1 jt</item>
+        <item>2 jt</item>
+        <item>3 jt</item>
+        <item>4 jt</item>
+        <item>5 jt</item>
+        <item>>5 jt</item>
+    </string-array>
+</resources>
