@@ -1,8 +1,11 @@
 package com.example.mywork.Beranda.Adapter
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +23,7 @@ class LokerPopulerAdapter (private val list: ArrayList<LokerModel>)
         var namaPerusahaan: TextView? = itemView.findViewById(R.id.text_perusahaan_loker)
         var tempatLoker: TextView? = itemView.findViewById(R.id.text_tempat_loker)
         var gajiLoker: TextView? = itemView.findViewById(R.id.text_gaji_loker)
+        var wishlist: ImageButton? = itemView.findViewById(R.id.button_wishlist_loker)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

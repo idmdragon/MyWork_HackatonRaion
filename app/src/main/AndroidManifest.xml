@@ -36,6 +36,7 @@
         </activity>
         <activity android:name=".Beranda.Activity.MainSeekersActivity" />
         <activity android:name=".Beranda.Activity.DetailLokerActivity"/>
+        <activity android:name=".Beranda.Activity.WishlistActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
