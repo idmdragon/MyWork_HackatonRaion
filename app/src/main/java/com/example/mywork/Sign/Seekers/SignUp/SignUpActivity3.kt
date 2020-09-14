@@ -1,21 +1,29 @@
 package com.example.mywork.Sign.Seekers.SignUp
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import com.example.mywork.Beranda.Activity.MainSeekersActivity
+import com.example.mywork.Pengaturan.PengaturanActivity
 import com.example.mywork.R
+import com.example.mywork.Sign.Seekers.SeekersModel
+import com.example.mywork.Sign.Seekers.SignIn.SignIn
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_sign_up3.*
 
 class SignUpActivity3 : AppCompatActivity() {
 
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var mUser: FirebaseUser
+    private lateinit var auth: FirebaseAuth
+    private lateinit var user: FirebaseUser
 
     private lateinit var database: FirebaseDatabase
     private lateinit var userRef: DatabaseReference
@@ -33,13 +41,20 @@ class SignUpActivity3 : AppCompatActivity() {
     }
 
 
-    var pekerjaan = ""
+
+
+
+     var pekerjaan = ""
      var gajiPilihan =""
      var kotapilihan =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up3)
+
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+        userRef = database.getReference("SEEKERS")
 
         val name = intent.getStringExtra(NAMA_SEEKERS)
         val email = intent.getStringExtra(email_seekers)
@@ -57,15 +72,19 @@ class SignUpActivity3 : AppCompatActivity() {
             finish()
         }
 
-        checkBox()
-        spinner_gaji()
-        spinner_kota()
+
 
         btnSelesai.setOnClickListener {
 
-            createAccount()
-
+            checkBox()
+            spinner_gaji()
+            spinner_kota()
+            registerUser(name!!, email!!, password!!,telepon!!,tanggalLahir!!,status!!,kerjaan!!,gajipilhan!!,kotaPilihan!!)
+            Toast.makeText(this,"Proses Membuat akun",Toast.LENGTH_LONG).show()
         }
+
+
+
 
 
 
@@ -150,54 +169,58 @@ class SignUpActivity3 : AppCompatActivity() {
             pekerjaan+="\nMusik"
         }
         }
+
+
+    fun registerUser(
+        nama: String, email: String, password: String,
+        kelamin: String, status: String, tanggalLahir: String,
+        gajipilhan: String, kotaPilihan: String, pekerjaan: String
+    ) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                        Log.d("RegisterUserDebug: ", "User: $email registered")
+                    insertUserDataToDatabase(nama, email,kelamin,status,tanggalLahir,
+                        gajipilhan,kotaPilihan,pekerjaan)
+
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(nama)
+                        .build()
+                    user?.updateProfile(profileUpdates)
+                    startActivity(Intent(this@SignUpActivity3, MainSeekersActivity::class.java))
+
+
+                } else {
+                    Log.d("RegisterUserDebug: ", "User: $email failed")
+                    Log.d("RegisterUserDebug: ", task.exception.toString())
+                    Toast.makeText(this,task.exception.toString(),Toast.LENGTH_SHORT).show()
+
+                }
+            }
     }
 
+    fun insertUserDataToDatabase(
+        nama: String, email: String,
+        kelamin: String, status: String, tanggalLahir: String,
+        gajipilhan: String, kotaPilihan: String, pekerjaan: String) {
+        val uid = auth.currentUser!!.uid
+        user = auth.currentUser!!
+
+        Log.d("UserUID", "User Registered UID: $uid")
+        val user = SeekersModel(nama, email,kelamin,status,tanggalLahir,
+            gajipilhan,kotaPilihan,pekerjaan)
+        userRef.child(uid).setValue(user)
+//
+//        user = auth.currentUser!!
 
 
-//    private fun createUser(email: String, password: String) {
-//
-//
-//
-//        auth.createUserWithEmailAndPassword(email,password)
-//            .addOnCompleteListener(this) {
-//                if(it.isSuccessful){
-//                    Toast.makeText(applicationContext,"User $password succesfull",Toast.LENGTH_LONG).show()
-//                    Log.d("RegisterTes","User $password succesfull")
-//                }else {
-//                    Log.d("RegisterTes","User $password failed")
-//                    Toast.makeText(applicationContext,"User $password fail",Toast.LENGTH_LONG).show()
-//                    Toast.makeText(applicationContext,"User $password succesfull",Toast.LENGTH_LONG).show()
-//
-//                }
-//
-//
-//            }
-//
-//
-//    }
+//        val seeker = SeekersModel(in_telp.text.toString(), in_birth.text.toString())
+//        db_ref.child(user.uid).setValue(seeker)
 
-//    fun registerUser(username: String, email: String, password: String) {
-//        mAuth.createUserWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    Log.d("RegisterUserDebug: ", "User: $email registered")
-//                    insertUserDataToDatabase(username, email)
-//                } else {
-//                    Log.d("RegisterUserDebug: ", "User: $email failed")
-//                    Log.d("RegisterUserDebug: ", task.exception.toString())
-//                }
-//            }
-//    }
+    }
 
-//    fun insertUserDataToDatabase(username: String, email: String) {
-//        val uid = mAuth.currentUser!!.uid
-//        mUser = mAuth.currentUser!!
-//        val uri: Uri // return https:www.gambar.com/pic/1
-//
-//        Log.d("UserUID", "User Registered UID: $uid")
-//        val user = UserModel(username, email)
-//        userRef.child(uid).setValue(user)
-//
-//
-//    }
+}
+
+
+
 

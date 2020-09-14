@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.mywork.R
-import com.example.mywork.Sign.Seekers.SignIn
+import com.example.mywork.Sign.Seekers.SignIn.SignIn
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_intro.*
 

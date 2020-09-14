@@ -19,13 +19,17 @@
         android:theme="@style/AppTheme" >
         <activity android:name=".Sign.Corporate.AjukanAccountComplete" >
         </activity>
+        <activity android:name=".Pengaturan.EditPreferensiActivity"></activity>
+        <activity android:name=".Pengaturan.EditProfilActivity" />
+        <activity android:name=".Pengaturan.PengaturanActivity" />
+
         <activity android:name=".Sign.Corporate.AjukanAccountActivity" />
         <activity android:name=".Sign.Corporate.SignCorporate" />
         <activity android:name=".Sign.Seekers.SignUp.SignUpActivity3" />
         <activity android:name=".Sign.Seekers.SignUp.SignUpActivity" />
         <activity android:name=".Sign.Seekers.SignUp.SignUpActivity2" />
         <activity android:name=".Intro.MulaiActivity" />
-        <activity android:name=".Sign.Seekers.SignIn" />
+        <activity android:name=".Sign.Seekers.SignIn.SignIn" />
         <activity android:name=".Intro.Intro" />
         <activity android:name=".SplashScreen" >
             <intent-filter>

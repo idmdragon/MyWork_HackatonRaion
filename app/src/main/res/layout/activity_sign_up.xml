@@ -20,10 +20,10 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toBottomOf="@+id/image_view2">
 
         <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ilTextInputLayout"
+            android:id="@+id/ilTextInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/image_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -166,6 +166,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="605dp" />
+
+    <ImageView
+        android:id="@+id/selectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toEndOf="@+id/image_view2"
+        app:layout_constraintStart_toStartOf="@+id/image_view2"
+        app:layout_constraintTop_toTopOf="@+id/image_view2"
+        app:srcCompat="@drawable/ic_btn_upload" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

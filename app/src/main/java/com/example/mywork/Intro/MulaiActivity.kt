@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mywork.R
-import com.example.mywork.Sign.Seekers.SignIn
+import com.example.mywork.Sign.Seekers.SignIn.SignIn
 import kotlinx.android.synthetic.main.activity_mulai.*
 
 class MulaiActivity : AppCompatActivity() {

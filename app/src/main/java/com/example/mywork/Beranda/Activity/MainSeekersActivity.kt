@@ -37,13 +37,13 @@ class MainSeekersActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainSeekersActivity, WishlistActivity::class.java))
             }
         })
-
-        mToggle = ActionBarDrawerToggle(this, drawer_layout_seeker, R.string.nav_open, R.string.nav_close)
-        drawer_layout_seeker.addDrawerListener(mToggle)
-        mToggle.syncState()
+//
+//        mToggle = ActionBarDrawerToggle(this, drawer_layout_seeker, R.string.nav_open, R.string.nav_close)
+//        drawer_layout_seeker.addDrawerListener(mToggle)
+//        mToggle.syncState()
 
         val nav_view = findViewById<NavigationView>(R.id.navigation_view_seeker)
-        nav_view.onNavigation
+//        nav_view.onNavigation
 
         val recyclerViewPop = findViewById<RecyclerView>(R.id.recycler_view_homepage_poploker)
         val recyclerViewRec = findViewById<RecyclerView>(R.id.recycler_view_homepage_recloker)
@@ -59,28 +59,28 @@ class MainSeekersActivity : AppCompatActivity() {
         return mToggle.onOptionsItemSelected(item)
     }
 
-    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        when (p0.itemId) {
-            R.id.nav_beranda -> {
-                println("Friend Clicked")
-                true
-            }
-            R.id.nav_forum -> {
-                println("Channel Clicked")
-                true
-            }
-            R.id.nav_pengaturan -> {
-                println("Status Clicked")
-                true
-            }
-            R.id.nav_keluar -> {
-                FirebaseAuth.getInstance().signOut()
-                true
-            }
-            else -> true
-        }
-        return true
-    }
+//    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
+//        when (p0.itemId) {
+//            R.id.nav_beranda -> {
+//                println("Friend Clicked")
+//                true
+//            }
+//            R.id.nav_forum -> {
+//                println("Channel Clicked")
+//                true
+//            }
+//            R.id.nav_pengaturan -> {
+//                println("Status Clicked")
+//                true
+//            }
+//            R.id.nav_keluar -> {
+//                FirebaseAuth.getInstance().signOut()
+//                true
+//            }
+//            else -> true
+//        }
+//        return true
+//    }
 
     private fun showListLokerPopuler(recyclerView: RecyclerView, listData: ArrayList<LokerModel>) {
         recyclerView.setHasFixedSize(true)
